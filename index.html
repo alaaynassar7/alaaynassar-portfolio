@@ -1,0 +1,924 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Alaa Youssef Nassar — DevOps Engineer Portfolio</title>
+    <meta name="description" content="Alaa Youssef Nassar — DevOps Engineer (AWS, Docker, Kubernetes, Terraform, CI/CD) + Instructor & Public Speaker portfolio." />
+
+    <style>
+        :root {
+            --bg: #070c1c;
+            --panel: #0b1022;
+            --muted: #a7b3c6;
+            --text: #f5f7ff;
+            --accent1: #2dd4bf;
+            --accent2: #7c3aed;
+            --stroke: rgba(255,255,255,0.22);
+            --soft: rgba(255,255,255,0.08);
+            --soft2: rgba(255,255,255,0.04);
+            --shadow: 0 18px 60px rgba(0,0,0,0.55);
+            --radius: 16px;
+            --sans: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html, body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--sans);
+            color: var(--text);
+            line-height: 1.55;
+            letter-spacing: 0.1px;
+            background: radial-gradient(1200px 920px at 12% -6%, rgba(45,212,191,0.18), transparent 55%), radial-gradient(1000px 860px at 104% 6%, rgba(124,58,237,0.18), transparent 60%), linear-gradient(180deg, #050820 0%, #050820 42%, #05051a 100%);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        ::selection {
+            background: rgba(45,212,191,0.22);
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 18px 18px 64px;
+        }
+
+        .section {
+            margin-top: 22px;
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        /* ---------- top bar ---------- */
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(10px);
+            background: linear-gradient(90deg, rgba(9,14,28,0.92), rgba(9,14,28,0.70));
+            border-bottom: 1px solid rgba(255,255,255,0.10);
+        }
+
+        .topbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 10px 0;
+        }
+
+        .brand {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            min-width: 240px;
+        }
+
+        .avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.14);
+            background: rgba(255,255,255,0.06);
+        }
+
+            .avatar img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+
+        .name {
+            line-height: 1.1;
+        }
+
+            .name b {
+                font-size: 14px;
+                letter-spacing: 0.2px;
+            }
+
+        .tag {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        .nav {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+            .nav a {
+                font-size: 13px;
+                padding: 8px 10px;
+                border-radius: 10px;
+                border: 1px solid rgba(255,255,255,0.12);
+                background: rgba(255,255,255,0.06);
+            }
+
+                .nav a:hover {
+                    background: rgba(255,255,255,0.12);
+                    border-color: rgba(255,255,255,0.22);
+                }
+
+        .pill {
+            display: inline-flex;
+            gap: 6px;
+            align-items: center;
+            padding: 8px 10px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, rgba(45,212,191,0.9), rgba(124,58,237,0.85));
+            color: #070a16;
+            font-weight: 800;
+            letter-spacing: 0.2px;
+        }
+
+        /* ---------- hero ---------- */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.18fr 0.82fr;
+            gap: 18px;
+            margin-top: 14px;
+        }
+
+        .panel {
+            border-radius: var(--radius);
+            border: 1px solid rgba(255,255,255,0.12);
+            background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+            box-shadow: var(--shadow);
+        }
+
+        .hero-left {
+            padding: 18px;
+        }
+
+        .kicker {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            font-size: 12px;
+            letter-spacing: 0.2px;
+            color: var(--muted);
+            text-transform: uppercase;
+        }
+
+            .kicker .dot {
+                width: 6px;
+                height: 6px;
+                border-radius: 999px;
+                background: rgba(45,212,191,0.9);
+            }
+
+        .h1 {
+            margin: 8px 0 6px;
+            font-size: 28px;
+            letter-spacing: -0.2px;
+            line-height: 1.1;
+        }
+
+        .sub {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+            max-width: 64ch;
+        }
+
+        .mini {
+            margin-top: 12px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .chip {
+            font-size: 12px;
+            padding: 6px 8px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.14);
+            background: rgba(0,0,0,0.22);
+            color: #eaf2ff;
+        }
+
+        .hero-right {
+            position: relative;
+            padding: 14px;
+        }
+
+        .portrait {
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.14);
+            background: rgba(255,255,255,0.06);
+        }
+
+            .portrait img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+        .glow {
+            position: absolute;
+            inset: auto -22px -22px auto;
+            width: 148px;
+            height: 148px;
+            border-radius: 999px;
+            background: radial-gradient(circle at 30% 30%, rgba(45,212,191,0.28), transparent 55%), radial-gradient(circle at 70% 70%, rgba(124,58,237,0.22), transparent 60%);
+            filter: blur(16px);
+            opacity: 0.9;
+            pointer-events: none;
+            animation: floaty 4.6s ease-in-out infinite;
+        }
+
+        @keyframes floaty {
+            0% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-8px)
+            }
+
+            100% {
+                transform: translateY(0)
+            }
+        }
+
+        /* ---------- section header ---------- */
+        .section-head {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 10px;
+            margin: 6px 0 12px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            letter-spacing: -0.1px;
+        }
+
+        .section-sub {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        /* ---------- grids & cards ---------- */
+        .grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .card {
+            padding: 14px;
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+            transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+        }
+
+            .card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 18px 48px rgba(0,0,0,0.55);
+                border-color: rgba(255,255,255,0.22);
+            }
+
+        /* ---------- tools (icons) ---------- */
+        .tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tool {
+            width: 104px;
+            height: 104px;
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.14);
+            background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: transform .22s ease, box-shadow .22s ease;
+        }
+
+            .tool:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 20px 54px rgba(124,58,237,0.22);
+            }
+
+            .tool .tname {
+                font-size: 12px;
+                color: #eaf2ff;
+                letter-spacing: 0.15px;
+            }
+
+            .tool svg {
+                width: 34px;
+                height: 34px;
+            }
+
+        /* ---------- gallery (single gallery block) ---------- */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .thumb {
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.14);
+            background: rgba(255,255,255,0.06);
+            aspect-ratio: 4/3;
+            cursor: pointer;
+        }
+
+            .thumb img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+                filter: saturate(0.96) contrast(1.02);
+            }
+
+            .thumb::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(135deg, rgba(0,0,0,0.0), rgba(0,0,0,0.60));
+                opacity: 0;
+                transition: opacity .2s ease;
+            }
+
+            .thumb:hover::after {
+                opacity: 1;
+            }
+
+            .thumb .cap {
+                position: absolute;
+                left: 10px;
+                bottom: 10px;
+                font-size: 12px;
+                letter-spacing: 0.2px;
+                color: #f2f6ff;
+                opacity: 0;
+                transition: opacity .2s ease;
+            }
+
+            .thumb:hover .cap {
+                opacity: 1;
+            }
+
+        /* ---------- lightbox ---------- */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.82);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 90;
+            padding: 16px;
+        }
+
+            .lightbox.open {
+                display: flex;
+            }
+
+        .lb {
+            max-width: 980px;
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.18);
+            background: #070a16;
+        }
+
+        .lb-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.12);
+        }
+
+        .lb-title {
+            font-weight: 800;
+            letter-spacing: 0.2px;
+        }
+
+        .lb-btn {
+            border: 1px solid rgba(255,255,255,0.16);
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            border-radius: 10px;
+            padding: 6px 10px;
+            cursor: pointer;
+        }
+
+        .lb-img {
+            width: 100%;
+            height: min(76vh, 680px);
+            object-fit: contain;
+            background: #020515;
+        }
+
+        /* ---------- contact icons (no squares) ---------- */
+        .contact-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .icon-btn {
+            width: 46px;
+            height: 46px;
+            border-radius: 999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.14);
+            background: rgba(255,255,255,0.06);
+            transition: transform .22s ease, background .22s ease, border-color .22s ease;
+        }
+
+            .icon-btn:hover {
+                transform: translateY(-2px);
+                background: rgba(255,255,255,0.14);
+                border-color: rgba(255,255,255,0.24);
+            }
+
+            .icon-btn svg {
+                width: 22px;
+                height: 22px;
+            }
+
+        /* ---------- responsive ---------- */
+        @media (max-width: 920px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .brand {
+                min-width: unset;
+            }
+        }
+
+        @media (max-width: 430px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .tools {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topbar">
+        <div class="container" style="padding-top: 10px; padding-bottom: 10px;">
+            <div class="topbar-inner">
+                <div class="brand">
+                    <div class="avatar">
+                        <!-- حطي صورتك هنا -->
+                        <img src="assets/alaanassar.png" alt="Alaa portrait">
+                    </div>
+                    <div class="name">
+                        <div><b>Alaa Youssef Nassar</b></div>
+                        <div class="tag">DevOps Engineer • Cloud & Automation</div>
+                    </div>
+                </div>
+                <div class="nav">
+                    <a href="#skills">Skills</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#education">Education</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#community">Public Speaking</a>
+                    <a href="#gallery">Gallery</a>
+                    <a href="#contact" class="pill" aria-label="Download CV"><span>Download CV</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- HERO -->
+        <div class="hero">
+            <div class="hero-left panel">
+                <div class="kicker"><span class="dot"></span> Portfolio · DevOps + Cloud + Teaching</div>
+                <div class="h1">I build secure pipelines — and teach others to build them too.</div>
+                <p class="sub">
+                    Junior DevOps Engineer with hands-on exposure to AWS, Docker, Kubernetes, Terraform, CI/CD and DevSecOps,
+                    backed by practical software development experience and active community leadership across MENA.
+                </p>
+                <div class="mini" aria-label="Highlights">
+                    <div class="chip">AWS · Kubernetes · Terraform</div>
+                    <div class="chip">CI/CD · DevSecOps · Automation</div>
+                    <div class="chip">Mentoring · Public Speaking · Community</div>
+                </div>
+            </div>
+
+            <div class="hero-right">
+                <div class="glow" aria-hidden="true"></div>
+                <div class="portrait panel">
+                    <!-- صورة البروفايل الكبيرة (بدّليها بملفك) -->
+                    <img src="assets/alaanassar.png" alt="Alaa portrait">
+                </div>
+            </div>
+        </div>
+
+        <!-- SKILLS (icons) -->
+        <section id="skills" class="section">
+            <div class="section-head">
+                <div>
+                    <div class="section-title">Tools & Technologies</div>
+                    <div class="section-sub">Icons instead of long text — clean, recruiter-friendly.</div>
+                </div>
+            </div>
+            <div class="tools" role="list" aria-label="DevOps tools">
+                <!-- injected by JS -->
+            </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section id="experience" class="section">
+            <div class="section-head">
+                <div>
+                    <div class="section-title">Work Experience</div>
+                    <div class="section-sub">Roles + what you actually did (short and strong).</div>
+                </div>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="card">
+                    <div style="display:flex; gap:10px; align-items:flex-start;">
+                        <div class="pill" style="font-size: 11px;">Current</div>
+                        <div>
+                            <div style="font-weight:800;">Cloud DevOps Intern</div>
+                            <div class="muted">National Telecommunication Institute (NTI), Egypt · Sep 2025 – Present</div>
+                        </div>
+                    </div>
+                    <ul class="muted" style="margin:10px 0 0 18px;">
+                        <li>Hands-on AWS, Docker, Kubernetes, Terraform, Jenkins, Ansible, DevSecOps</li>
+                        <li>CI/CD pipelines + automated infrastructure provisioning</li>
+                        <li>Containerization + secure software delivery</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div style="font-weight:800;">Part-Time Coding Instructor</div>
+                    <div class="muted">iSchool · Dec 2024 – Present</div>
+                    <p class="muted" style="margin-top:8px;">Teaching programming & computational thinking through interactive, project-based learning.</p>
+                </div>
+
+                <div class="card">
+                    <div style="font-weight:800;">Part-Time Tech Mentor</div>
+                    <div class="muted">Google for Developers · Jul 2021 – Oct 2024</div>
+                    <p class="muted" style="margin-top:8px;">Supporting learners with hands-on paths in programming and practical projects.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-3" style="margin-top:12px;">
+                <div class="card">
+                    <div style="font-weight:800;">.NET Development Intern</div>
+                    <div class="muted">ITI (Egypt) · Jul 2023 – Sep 2023</div>
+                    <p class="muted" style="margin-top:8px;">C#, SQL Server, LINQ, Entity Framework, ASP.NET MVC (120 hours).</p>
+                </div>
+                <div class="card">
+                    <div style="font-weight:800;">Android Development Intern</div>
+                    <div class="muted">ITI (Egypt) · Jan 2023 – Feb 2023</div>
+                    <p class="muted" style="margin-top:8px;">Java & Android app development (120 hours).</p>
+                </div>
+                <div class="card">
+                    <div style="font-weight:800;">UI Development Intern</div>
+                    <div class="muted">ITI (Egypt) · Jul 2022 – Sep 2022</div>
+                    <p class="muted" style="margin-top:8px;">HTML, CSS, JS, Bootstrap, jQuery, SASS, UX, Photoshop & Illustrator (150 hours).</p>
+                </div>
+            </div>
+
+            <div class="grid grid-3" style="margin-top:12px;">
+                <div class="card">
+                    <div style="font-weight:800;">Web Design Intern</div>
+                    <div class="muted">NTI (Egypt) · May 2022 – Sep 2022</div>
+                    <p class="muted" style="margin-top:8px;">Responsive & mobile-friendly web design (HTML, CSS, Bootstrap, JS, jQuery).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION (GPA removed as requested) -->
+        <section id="education" class="section">
+            <div class="section-head">
+                <div>
+                    <div class="section-title">Education</div>
+                    <div class="section-sub">Degrees (clean and professional — no GPA).</div>
+                </div>
+            </div>
+            <div class="grid grid-2">
+                <div class="card">
+                    <div style="display:flex; gap:10px; align-items:flex-start;">
+                        <div class="pill" style="font-size: 11px;">MSc</div>
+                        <div>
+                            <div style="font-weight:800;">Master’s degree in computer science and information technology</div>
+                            <div class="muted">Menoufia University, Egypt · September 2024 – Present</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div style="display:flex; gap:10px; align-items:flex-start;">
+                        <div class="pill" style="font-size: 11px;">BSc</div>
+                        <div>
+                            <div style="font-weight:800;">Bachelor’s degree in computer and information technology</div>
+                            <div class="muted">Egyptian E-Learning University (EELU), Menoufia, Egypt · September 2020 – July 2024</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects" class="section">
+            <div class="section-head">
+                <div>
+                    <div class="section-title">Projects</div>
+                    <div class="section-sub">Clear outcomes + stack (short, recruiter-friendly).</div>
+                </div>
+            </div>
+            <div class="grid grid-3">
+                <div class="card">
+                    <div style="font-weight:800;">Rover — Personal Transportation App</div>
+                    <p class="muted" style="margin-top:8px;">Ride-sharing app with GPS, .NET backend, and secure authentication.</p>
+                    <div class="muted" style="margin-top:8px;">Stack: C# · .NET · SQL</div>
+                </div>
+                <div class="card">
+                    <div style="font-weight:800;">Pet Store Website</div>
+                    <p class="muted" style="margin-top:8px;">Responsive e-commerce site (catalog + cart).</p>
+                    <div class="muted" style="margin-top:8px;">Stack: HTML · CSS · JS · Bootstrap</div>
+                </div>
+                <div class="card">
+                    <div style="font-weight:800;">Clothing Store Website</div>
+                    <p class="muted" style="margin-top:8px;">Full web solution (catalog, orders, user management).</p>
+                    <div class="muted" style="margin-top:8px;">Stack: HTML · CSS · JS · PHP</div>
+                </div>
+                <div class="card">
+                    <div style="font-weight:800;">Pharmacy Management System</div>
+                    <p class="muted" style="margin-top:8px;">Java & SQL system for inventory, prescriptions, reporting & data security.</p>
+                    <div class="muted" style="margin-top:8px;">Stack: Java · SQL</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMMUNITY (Public Speaking + Kids Instructor) -->
+        <section id="community" class="section">
+            <div class="section-head">
+                <div>
+                    <div class="section-title">Public Speaking & Teaching</div>
+                    <div class="section-sub">Two focused blocks (each one can carry one photo you replace later).</div>
+                </div>
+            </div>
+
+            <div class="grid grid-2">
+                <!-- Public Speaking (photo placeholder) -->
+                <div class="card">
+                    <div style="display:flex; gap:10px; align-items:flex-start;">
+                        <div class="pill" style="font-size: 11px;">Public Speaking</div>
+                        <div>
+                            <div style="font-weight:800;">Workshops & Talks (DSC / WTM / Community)</div>
+                            <div class="muted">Use your event photo here (stage / slides / audience).</div>
+                        </div>
+                    </div>
+                    <div class="panel" style="margin-top:10px; overflow:hidden; border-radius: 14px;">
+                        <img src="assets/public-speaking.jpg" alt="Public speaking" style="width:100%; height:220px; object-fit:cover; display:block;">
+                    </div>
+                </div>
+
+                <!-- Kids Instructor (photo placeholder) -->
+                <div class="card">
+                    <div style="display:flex; gap:10px; align-items:flex-start;">
+                        <div class="pill" style="font-size: 11px;">Kids Instructor</div>
+                        <div>
+                            <div style="font-weight:800;">Coding Instructor (iSchool / sessions)</div>
+                            <div class="muted">Add one photo from a kids coding session (class / project time).</div>
+                        </div>
+                    </div>
+                    <div class="panel" style="margin-top:10px; overflow:hidden; border-radius: 14px;">
+                        <img src="assets/kids-instructor.jpg" alt="Kids coding instructor" style="width:100%; height:220px; object-fit:cover; display:block;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AWARDS (Huawei medals + IO Connect) -->
+        <section id="awards" class="section">
+            <div class="section-head">
+                <div>
+                    <div class="section-title">Grants & Awards</div>
+                    <div class="section-sub">Huawei medals + Google I/O Connect (organized and clean).</div>
+                </div>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="card">
+                    <div style="display:flex; gap:10px; align-items:center;">
+                        <div class="pill" style="font-size: 11px;">Huawei ICT</div>
+                        <div>
+                            <div style="font-weight:800;">Gold (Network Track)</div>
+                            <div class="muted">2024–2025 · 2023–2024</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div style="display:flex; gap:10px; align-items:center;">
+                        <div class="pill" style="font-size: 11px;">Huawei ICT</div>
+                        <div>
+                            <div style="font-weight:800;">Silver (Network Track)</div>
+                            <div class="muted">2022–2023 · 2021–2022</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div style="display:flex; gap:10px; align-items:center;">
+                        <div class="pill" style="font-size: 11px;">Google IO Connect</div>
+                        <div>
+                            <div style="font-weight:800;">Invitations</div>
+                            <div class="muted">Berlin 2025 · Berlin 2024 · Amsterdam 2023</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALLERY (one gallery, 8 images) -->
+        <section id="gallery" class="section">
+            <div class="section-head">
+                <div>
+                    <div class="section-title">Gallery</div>
+                    <div class="section-sub">One clean gallery (8 images). Replace files in assets/gallery/ (names can stay as-is).</div>
+                </div>
+            </div>
+
+            <div class="gallery" aria-label="Gallery images">
+                <div class="thumb" data-src="assets/gallery/01.jpg"><img src="assets/gallery/01.jpg" alt="Gallery 1"><div class="cap">Event / Award</div></div>
+                <div class="thumb" data-src="assets/gallery/02.jpg"><img src="assets/gallery/02.jpg" alt="Gallery 2"><div class="cap">Workshop</div></div>
+                <div class="thumb" data-src="assets/gallery/03.jpg"><img src="assets/gallery/03.jpg" alt="Gallery 3"><div class="cap">Session</div></div>
+                <div class="thumb" data-src="assets/gallery/04.jpg"><img src="assets/gallery/04.jpg" alt="Gallery 4"><div class="cap">Community</div></div>
+                <div class="thumb" data-src="assets/gallery/05.jpg"><img src="assets/gallery/05.jpg" alt="Gallery 5"><div class="cap">Certificate</div></div>
+                <div class="thumb" data-src="assets/gallery/06.jpg"><img src="assets/gallery/06.jpg" alt="Gallery 6"><div class="cap">Mentoring</div></div>
+                <div class="thumb" data-src="assets/gallery/07.jpg"><img src="assets/gallery/07.jpg" alt="Gallery 7"><div class="cap">Team</div></div>
+                <div class="thumb" data-src="assets/gallery/08.jpg"><img src="assets/gallery/08.jpg" alt="Gallery 8"><div class="cap">Showcase</div></div>
+            </div>
+        </section>
+
+        <!-- CONTACT (icons only, no squares) -->
+        <section id="contact" class="section">
+            <div class="section-head">
+                <div>
+                    <div class="section-title">Contact</div>
+                    <div class="section-sub">Icons only (clean + professional).</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="contact-row">
+                    <a class="icon-btn" href="https://www.linkedin.com/in/alaaynassar7" target="_blank" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.5 9.2H3.3V20h3.2V9.2ZM4.9 7.8a1.9 1.9 0 1 0 0-3.8 1.9 1.9 0 0 0 0 3.8ZM21 20h-3.2v-5.4c0-1.3 0-3-1.8-3-1.8 0-2.1 1.4-2.1 2.9V20H10.7V9.2h3.1v1.5h.04c.43-.82 1.5-1.7 3.1-1.7 3.3 0 3.9 2.2 3.9 5.1V20Z" fill="currentColor" />
+                        </svg>
+                    </a>
+                    <a class="icon-btn" href="mailto:alaaynassar7@gmail.com" aria-label="Email">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 7h16v10H4V7Z" stroke="currentColor" stroke-width="2" />
+                            <path d="m4 8 8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                    <a class="icon-btn" href="https://github.com/alaaynassar7" target="_blank" aria-label="GitHub">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 21c-4 0-7-3-7-7 0-3.9 2.7-7 6.4-7.9.4-.1.6.2.6.5v1.7c-2.6-.6-3.1 1.1-3.1 1.1-.4 1.1-1 1.4-1 1.4-.8.5.1.5.1.5.9-.1 1.4.9 1.4.9.8 1.4 2.1 1 2.6.8.1-.6.3-1 .5-1.2-2.1-.2-4.3-1-4.3-4.5 0-1 .3-1.8.9-2.5-.1-.2-.4-1.3.1-2.6 0 0 .8-.3 2.6 1a9 9 0 0 1 4.8 0c1.8-1.3 2.6-1 2.6-1 .5 1.3.2 2.4.1 2.6.6.7.9 1.5.9 2.5 0 3.5-2.2 4.3-4.3 4.5.3.2.6.8.6 1.6v2.3c0 .3.2.6.6.5C19 21 22 18 22 14c0-4-3-7-7-7" fill="currentColor" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="muted" style="margin-top:10px;">Email: alaaynassar7@gmail.com · Phone: +20 155 280 3181</div>
+            </div>
+        </section>
+
+        <footer class="section">
+            <div style="text-align:center; color: var(--muted); font-size: 13px;">
+                © <span id="year"></span> Alaa Youssef Nassar — All rights reserved
+            </div>
+        </footer>
+    </div>
+
+    <!-- LIGHTBOX (gallery) -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+        <div class="lb">
+            <div class="lb-top">
+                <div class="lb-title" id="lbTitle">Preview</div>
+                <button class="lb-btn" id="lbClose" aria-label="Close preview">Close</button>
+            </div>
+            <img class="lb-img" id="lbImg" alt="Preview image" src="">
+        </div>
+    </div>
+
+    <script>
+        // Tools (icons + labels) — clean set (not too many), with DevOps focus
+        const toolDefs = [
+            { key: "aws", label: "AWS", svg: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 17c3-4 7-6 11-6s8 2 11 6" stroke="#FF9900" stroke-width="1.8" stroke-linecap="round"/><path d="M3 13c3-2 7-3 11-3s8 1 11 3" stroke="#EDF2FF" stroke-width="1.6" stroke-linecap="round"/></svg>` },
+            { key: "docker", label: "Docker", svg: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="10" width="18" height="6" rx="1" stroke="#2496ED" stroke-width="1.7"/><path d="M6 10V8a2 2 0 0 1 2-2h10" stroke="#2496ED" stroke-width="1.7" stroke-linecap="round"/></svg>` },
+            { key: "k8s", label: "Kubernetes", svg: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#326CE5" stroke-width="1.7"/><path d="M12 3v9l4 2" stroke="#326CE5" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>` },
+            { key: "terraform", label: "Terraform", svg: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l8 8-8 8-8-8 8-8z" stroke="#7B42BC" stroke-width="1.7"/></svg>` },
+            { key: "ansible", label: "Ansible", svg: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3l8 5v8c0 6-8 9-8 9s-8-3-8-9V8l8-5z" stroke="#EE0000" stroke-width="1.6" fill="rgba(238,0,0,0.08)"/></svg>` },
+            { key: "jenkins", label: "Jenkins", svg: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#D33833" stroke-width="1.7"/></svg>` },
+            { key: "git", label: "Git", svg: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 12h18" stroke="#F05032" stroke-width="1.7" stroke-linecap="round"/></svg>` },
+            { key: "linux", label: "Linux", svg: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3c5 0 9 4 9 9 0 5-4 9-9 9-5 0-9-4-9-9 0-5 4-9 9-9z" stroke="#A6B6FF" stroke-width="1.7"/></svg>` }
+        ];
+
+        const toolsEl = document.querySelector(".tools");
+        toolDefs.forEach(t => {
+            const el = document.createElement("div");
+            el.className = "tool";
+            el.innerHTML = `${t.svg}<div class="tname">${t.label}</div>`;
+            toolsEl.appendChild(el);
+        });
+
+        // smooth scroll for nav anchors
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener("click", (e) => {
+                const id = a.getAttribute("href");
+                if (id && id.length > 1) {
+                    e.preventDefault();
+                    const target = document.querySelector(id);
+                    if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+            });
+        });
+
+        // gallery lightbox
+        const lb = document.getElementById("lightbox");
+        const lbImg = document.getElementById("lbImg");
+        const lbTitle = document.getElementById("lbTitle");
+        const lbClose = document.getElementById("lbClose");
+
+        document.querySelectorAll(".thumb").forEach(t => {
+            t.addEventListener("click", () => {
+                const src = t.getAttribute("data-src") || (t.querySelector("img")?.getAttribute("src") || "");
+                const alt = (t.querySelector("img")?.getAttribute("alt") || "Image").trim();
+                lbImg.src = src;
+                lbImg.alt = alt;
+                lbTitle.textContent = alt;
+                lb.classList.add("open");
+            });
+        });
+
+        const closeLb = () => lb.classList.remove("open");
+        lbClose.addEventListener("click", closeLb);
+        lb.addEventListener("click", (e) => { if (e.target === lb) closeLb(); });
+        document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLb(); });
+
+        // year
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
